@@ -1,0 +1,392 @@
+
+
+
+.blog-section {
+    width: 100%;
+    background-color: var(--secondary-color);
+    height: 100%;
+    opacity: 0;
+    
+    @include media($breakpoint-md) {
+      opacity: 1;
+    }
+  
+    @include media($breakpoint-xs) {
+      height: unset;
+    }
+  
+    .blog-header {
+      display: none;
+      padding: 50px 20px 20px 20px;
+      @include media($breakpoint-md) {
+        display: flex;
+        justify-content: center;
+      }
+  
+      h3 {
+        color: white;
+        font-size: 36px;
+      }
+    }
+  
+    .blog {
+      &-wrapper {
+        display: flex;
+        flex-direction: row;
+        padding: 10px; /* This is where I add padding to the border of the blog page */
+        // gap: 20px;
+        /* @include media($breakpoint-xl) {
+          height: 100vh;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: 1fr 1fr;
+        } */
+        @include media($breakpoint-md) {
+          height: 100vh;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: 1fr 1fr;
+        }
+        @include media($breakpoint-sm) {
+          height: 1200px;
+          display: flex;
+          flex-direction: column; /* Here is where I get the blog-tiles adjust into a column when shruk to mobile sizes */
+        }
+        @include media($breakpoint-xs) {
+          height: 1200px;
+          display: flex;
+          flex-direction: column; /* Here is where I get the blog-tiles adjust into a column when shruk to mobile sizes */
+        }
+  
+        /* .blog-row-wrapper:first-child {
+          .blog-tile:first-child {
+            width: 90%;
+          }
+          .blog-tile:last-child {
+            width: 90%;
+          }
+          @include media($breakpoint-md) {
+            padding-bottom: 2px;
+          }
+          @include media($breakpoint-sm) {
+            padding: 0;
+          }
+        }
+  
+        .blog-row-wrapper:last-child {
+          .blog-tile:first-child {
+            width: 90%;
+          }
+          .blog-tile:last-child {
+            width: 90%;
+          }
+          @include media($breakpoint-md) {
+            padding-top: 2px;
+          }
+          @include media($breakpoint-sm) {
+            padding: 0;
+          }
+        } */
+      }
+  
+      &-row-wrapper {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        width: 90%;
+        height: 90%;
+  
+        .blog-tile:first-child {
+          .blog-content .blog-title {
+            /* padding-left: 20px; */
+            @include media($breakpoint-md) {
+              /* padding-left: 20px; */
+            }
+          }
+        }
+      }
+  
+      &-tile {
+        display: flex; /* I have added this, I need to confirm if required */
+        flex-direction: column;
+        overflow: hidden;
+        position: relative;
+  /*       flex-grow: 3;
+        flex-shrink: 1;
+        flex-basis: auto; */
+        width: 100%;
+        height: 100%;
+  
+        /* transition: width ease 0.3s; */
+  
+        opacity: 0;
+        pointer-events: none;
+  
+        .blog-title {
+          /* transition-delay: 0.3s; */
+          width: 100%;
+          margin-bottom: 20px;
+          padding-right: 30px;
+          line-height: 1.2;
+          opacity: 1;
+        }
+  
+        .blog-link {
+          /* transition-delay: 0.3s; */
+          font-size: small;
+          letter-spacing: normal;
+          text-transform: none;
+          opacity: 1;
+  
+        }
+  
+        .blog-content {
+          /* transition-delay: 0.2s; */
+          display: flex ;
+          flex-direction: column;
+          align-items: start;
+          bottom: 0%;
+          background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+        }
+  
+        @include media($breakpoint-md) {
+          opacity: 1;
+          pointer-events: all;
+        }
+  
+        @include media($breakpoint-xs) {
+          height: 400px;
+          display: flex;
+          
+  
+          .blog-title {
+            /* transition-delay: 0.3s; */
+            margin: 0;
+            width: 80%;
+          }
+  
+          .blog-link {
+            font-size: 10px;
+          }
+        }
+  
+        /* .blog-link {
+          display: flex;
+          flex-direction: column;
+          width: fit-content !important;
+        } */
+  
+        /* &::after {
+          content: "";
+          position: absolute;
+          transition: all ease 0.3s;
+          top: 0;
+          left: 0;
+          z-index: 1;
+          height: 100%;
+          width: 100%;
+          background: rgb(33, 32, 38);
+          background: linear-gradient(
+            0deg,
+            rgba(33, 32, 38, 1) 2%,
+            rgba(33, 32, 38, 0.3) 100%
+          );
+          opacity: 0;
+          mix-blend-mode: multiply;
+        } */
+  
+        /* @media only screen and (min-width: $breakpoint-md) {
+          &:hover {
+            &::after {
+              opacity: 1;
+              opacity: 1;
+            }
+  
+            .blog-title {
+              transition-delay: 0.3s;
+              opacity: 1;
+            }
+  
+            .blog-link {
+              transition-delay: 0.3s;
+              opacity: 1;
+            }
+  
+            .blog-content {
+              transition-delay: 0.2s;
+              bottom: 0%;
+            }
+          }
+  
+          &.hover {
+            &::after {
+              opacity: 1;
+              opacity: 1;
+            }
+  
+            .blog-title {
+              transition-delay: 0.3s;
+              opacity: 1;
+            }
+  
+            .blog-link {
+              transition-delay: 0.3s;
+              opacity: 1;
+            }
+  
+            .blog-content {
+              transition-delay: 0.2s;
+              bottom: 0%;
+            }
+          }
+        } */
+  
+        /* @media only screen and (max-width: $breakpoint-md) {
+          &::after {
+            opacity: 1;
+          }
+  
+          .blog-title {
+            transition-delay: 0.3s;
+            opacity: 1;
+          }
+  
+          .blog-link {
+            transition-delay: 0.3s;
+            opacity: 1;
+          }
+  
+          .blog-content {
+            transition-delay: 0.2s;
+            bottom: 0%;
+          }
+        } */
+      }
+  
+      &-image {
+        padding: 5px; /* Amended to create the padding around each image */
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+        opacity: 0.8;
+        @include media($breakpoint-md) {
+          padding: 0;
+        }
+      }
+  
+      &-content {
+        padding: 30px; /* Amended to create the padding around the blog content title at the bottom of each image */
+        
+        /* transition: ease all 0.3s; */
+        z-index: 2;
+        position: absolute;
+  
+        bottom: -30%;
+        left: 0;
+        width: 100%;
+  
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+  
+        @include media($breakpoint-md) {
+          flex-direction: column;
+          gap: 10px;
+          /* align-items: flex-start; */
+          padding: 18px;
+        }
+      }
+  
+      &-title {
+        color: white;
+        font-size: 18px;
+        max-width: 500px;
+        opacity: 0;
+        @include media($breakpoint-md) {
+          font-size: 16px;
+        }
+      }
+  
+      /* &-link {
+        transition: all ease 0.3s;
+        opacity: 0;
+        color: white;
+        width: 50%;
+      } */
+    }
+  
+    @media only screen and (max-width: $breakpoint-md) {
+      .blog-wrapper {
+        .blog-row-wrapper:first-child {
+          .blog-tile:first-child {
+            width: 130%;
+            @include media($breakpoint-xs) {
+              width: 100%;
+            }
+          }
+        }
+  
+        .blog-row-wrapper:last-child {
+          .blog-tile:last-child {
+            width: 130%;
+            @include media($breakpoint-xs) {
+              width: 100%;
+            }
+          }
+        }
+  
+        .blog-row-wrapper {
+          gap: 5px;
+          @include media($breakpoint-xs) {
+            flex-direction: column;
+            gap: 0px;
+          }
+        }
+      }
+    }
+  
+    .blog-tile {
+      @include media($breakpoint-xs) {
+        width: 100% !important;
+      }
+    }
+  }
+  
+
+
+  /* ---------------------------------------------- */
+
+  /* /* Below is where I am starting to create the transform animation for the hover over the images -- This is the initial positioning of the blog-content 
+  position: relative;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.blog-content::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1));
+}
+
+.blog-content::after {
+  content: "";
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: rgba(0, 0, 0, 1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.blog-container:hover .blog-content::after {
+  transform: translateY(100%);
+} */

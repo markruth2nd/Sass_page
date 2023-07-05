@@ -1,0 +1,223 @@
+
+
+
+.blog-section {
+    width: 100%;
+    background-color: var(--secondary-color);
+    height: 100%;
+    opacity: 0;
+    
+    @include media($breakpoint-md) {
+      opacity: 1;
+    }
+  
+    @include media($breakpoint-xs) {
+      height: unset;
+    }
+  
+    .blog-header {
+      display: none;
+      padding: 50px 20px 20px 20px;
+      @include media($breakpoint-md) {
+        display: flex;
+        justify-content: center;
+      }
+  
+      h3 {
+        color: white;
+        font-size: 36px;
+      }
+    }
+  
+    .blog {
+      &-wrapper {
+        display: flex;
+        flex-direction: row;
+        padding: 10px; /* This is where I add padding to the border of the blog page */
+  
+        @include media($breakpoint-md) {
+          height: 100vh;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: 1fr 1fr;
+        }
+        @include media($breakpoint-sm) {
+          height: 1200px;
+          display: flex;
+          flex-direction: column; /* Here is where I get the blog-tiles adjust into a column when shruk to mobile sizes */
+        }
+        @include media($breakpoint-xs) {
+          height: 1200px;
+          display: flex;
+          flex-direction: column; /* Here is where I get the blog-tiles adjust into a column when shruk to mobile sizes */
+        }
+  
+      }
+  
+      &-row-wrapper {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        width: 90%;
+        height: 90%;
+  
+        .blog-tile:first-child {
+          .blog-content .blog-title {
+            /* padding-left: 20px; */
+            @include media($breakpoint-md) {
+              /* padding-left: 20px; */
+            }
+          }
+        }
+      }
+  
+      &-tile {
+        display: flex; /* I have added this, I need to confirm if required */
+        flex-direction: column;
+        overflow: hidden;
+        position: relative;
+  
+        width: 100%;
+        height: 100%;
+  
+        transition: width ease 0.3s;
+  
+        opacity: 0;
+        pointer-events: none;
+  
+        .blog-title {
+          transition-delay: 0.3s;
+          width: 100%;
+          margin-bottom: 20px;
+          padding-right: 30px;
+          line-height: 1.2;
+          opacity: 1;
+        }
+  
+        .blog-link {
+          transition-delay: 0.3s;
+          font-size: small;
+          letter-spacing: normal;
+          text-transform: none;
+          opacity: 1;
+  
+        }
+  
+        .blog-content {
+          transition-delay: 0.2s;
+          display: flex ;
+          flex-direction: column;
+          align-items: start;
+          bottom: 0%;
+          background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  
+        }
+  
+        @include media($breakpoint-md) {
+          opacity: 1;
+          pointer-events: all;
+        }
+  
+        @include media($breakpoint-xs) {
+          height: 400px;
+          display: flex;
+          
+  
+          .blog-title {
+            transition-delay: 0.3s;
+            margin: 0;
+            width: 80%;
+          }
+  
+          .blog-link {
+            font-size: 10px;
+          }
+        }
+  
+      }
+  
+      &-image {
+        padding: 5px; /* Amended to create the padding around each image */
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+        opacity: 0.8;
+        @include media($breakpoint-md) {
+          padding: 0;
+        }
+      }
+  
+      &-content {
+        padding: 30px; /* Amended to create the padding around the blog content title at the bottom of each image */
+        
+        transition: ease all 0.3s;
+        z-index: 2;
+        position: absolute;
+  
+        bottom: -30%;
+        left: 0;
+        width: 100%;
+  
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+  
+        @include media($breakpoint-md) {
+          flex-direction: column;
+          gap: 10px;
+          /* align-items: flex-start; */
+          padding: 18px;
+        }
+      }
+  
+      &-title {
+        color: white;
+        font-size: 18px;
+        max-width: 500px;
+        opacity: 0;
+        @include media($breakpoint-md) {
+          font-size: 16px;
+        }
+      }
+  
+    }
+  
+    @media only screen and (max-width: $breakpoint-md) {
+      .blog-wrapper {
+        .blog-row-wrapper:first-child {
+          .blog-tile:first-child {
+            width: 130%;
+            @include media($breakpoint-xs) {
+              width: 100%;
+            }
+          }
+        }
+  
+        .blog-row-wrapper:last-child {
+          .blog-tile:last-child {
+            width: 130%;
+            @include media($breakpoint-xs) {
+              width: 100%;
+            }
+          }
+        }
+  
+        .blog-row-wrapper {
+          gap: 5px;
+          @include media($breakpoint-xs) {
+            flex-direction: column;
+            gap: 0px;
+          }
+        }
+      }
+    }
+  
+    .blog-tile {
+      @include media($breakpoint-xs) {
+        width: 100% !important;
+      }
+    }
+  }
+  
